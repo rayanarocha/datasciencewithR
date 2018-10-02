@@ -18,3 +18,5 @@ ggplot(data = carros) + geom_point(mapping = aes(x = displ, y = hwy, color = "bl
 ?mpg
 
 ggplot(data = carros) + geom_point(mapping = aes(x = year, y = cyl, shape = class))
+
+ggplot(data = carros) + geom_point(mapping = aes(x = displ, y = hwy, color = class)) + facet_wrap(~ class, nrow = 2)
