@@ -32,6 +32,6 @@ c1
 
 plot(iris, col = fitK$cluster)
 
-#library(cluster)
-#clusplot(df, kmf$cluster, main = "2D representation of Cluster", shade = TRUE, labels = 2, lines = 0)
+library(cluster)
+clusplot(df, kmf$cluster, main = "2D representation of Cluster", shade = TRUE, labels = 2, lines = 0)
 
