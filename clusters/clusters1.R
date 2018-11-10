@@ -3,10 +3,10 @@ install.packages("twitteR")
 install.packages("cluster")
 install.packages("fpc")
 
-library(rattle)
-library(twitteR)
+#library(rattle)
+#library(twitteR)
 library(cluster)
-library(fpc)
+#library(fpc)
 
 #d1 <- read.csv("C:/Users/rayan/Documents/datasciencewithR/clusters/csv/bd-dec17-age-specific-birth-rates.csv", header = TRUE, sep = ",")
 #d$country = as.numeric(as.factor(d$country))
@@ -27,41 +27,31 @@ evadidos$renda = as.numeric(as.factor(evadidos$renda))
 evadidos$IRA = as.numeric(as.factor(evadidos$IRA))
 evadidos$reprovacoes = as.numeric(as.factor(evadidos$reprovacoes))
 
-#data(evadidos)
-?plot
 plot(evadidos$municipio_origem, type = "p", main = "plot(x, type = \"s\")", cex = 1, col = "blue")
 plot(evadidos$raca)
 plot(evadidos$sexo, type = "p", xlab = "a", ylab = "b")
-plot(evadidos$renda)
-plot(evadidos$situacao)
 
 head(evadidos)
 #data(evadidos, package = "rattle")
-df<-scale(evadidos)
-kmf<-kmeans(df, 2)
-attributes(kmf)
-
-kmf$size
+df<-scale(evadidos) # padrão centraliza e / ou dimensiona as colunas de uma matriz numérica
+# kmeans - visa particionar os pontos em k grupos de forma que a soma dos quadrados dos pontos aos centros de cluster designados seja minimizada
+kmf<-kmeans(df, 2) # guarda dentro de 'kmf' o resultado do que feito na chamda da função 'kmeans'
+attributes(kmf) # mostra os atributos da variável 'kmf'
 
 kmf$centers
 
 kmf$cluster
 
-?cbind
+# Tomar uma sequência de vector, de matriz ou de quadro de dados argumentos e combinar por columns 
+# ou rows, respectivamente. Estas são funções genéricas com métodos para outras classes R.
 c1<-cbind(kmf$cluster)
 c1
 
 plot(evadidos, col = kmf$cluster)
 
-?clusplot
 clusplot(df, kmf$cluster, main = "2D representation of Cluster", shade = TRUE, labels = 5, lines = 2, stand = TRUE)
 pdf("datasciencewithR/clusters/grafico.pdf", width = 20, height = 14)
 dev.off()
-
-
-
-
-
 
 #pam(evadidos, 2, diss = inherits(df, "dist"),
  #   metric = c("euclidean", "manhattan"), 
