@@ -1,17 +1,12 @@
-install.packages("rattle")
-install.packages("twitteR")
 install.packages("cluster")
-install.packages("fpc")
 
-#library(rattle)
-#library(twitteR)
 library(cluster)
-#library(fpc)
+library(readxl)
+
 
 #d1 <- read.csv("C:/Users/rayan/Documents/datasciencewithR/clusters/csv/bd-dec17-age-specific-birth-rates.csv", header = TRUE, sep = ",")
 #d$country = as.numeric(as.factor(d$country))
 
-library(readxl)
 evadidos <- read_excel("datasciencewithR/clusters/evasao_evadidos (2).xlsx")
 View(evadidos)
 
